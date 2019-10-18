@@ -9,7 +9,7 @@
     "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
     "test": "npm run env -s && ng test",
     "lint": "tslint -p tsconfig.json -c tslint.json 'src/**/*.ts'",
-    "lint-diff": "tslint -p tsconfig.json -c tslint.json $(git diff --name-only origin/${DEST:-beta7}...HEAD | grep '\\.ts$') 'src/main.ts'",
+    "lint-diff": "tslint -p tsconfig.json -c tslint.json $(git diff --name-only origin/${DEST:-master}...HEAD | grep '\\.ts$') 'src/main.ts'",
     "reinstall": "rm -rf node_modules/ && npm i",
     "test:ci": "npm run env -s && npm run lint -s && ng test --configuration=ci",
     "env": "ngx-scripts env npm_package_version",
