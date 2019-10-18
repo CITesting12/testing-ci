@@ -3,13 +3,33 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
-jobs:
-  build:
+
+# Executor Definitions
+# https://circleci.com/docs/2.0/reusing-config/#authoring-reusable-executors
+executors:
+  default-executor:
     docker:
-      # specify the version you desire here
       - image: circleci/node:11.5.0
 
+# Job definitions
+# Jobs can include parameters that are passed in the workflow job invocation.
+# https://circleci.com/docs/2.0/reusing-config/#authoring-parameterized-jobs
+jobs:
+  build:
+    executor: default-executor
     steps:
       - checkout
       - run: npm install
       - run: npm run build
+
+  lint:
+    executor: default-executor
+    steps:
+      - run: npm install
+      - run: npm run lint-diff
+
+  test:
+    executor: default-executor
+    steps:
+      - run: npm install
+      - run: npm run test:ci
