@@ -11,6 +11,5 @@ jobs:
     working_directory: ~/
 
     steps:
-      - run
       - run: npm install
       - run: npm test
