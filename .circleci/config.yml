@@ -25,12 +25,14 @@ jobs:
   lint:
     executor: default-executor
     steps:
+      - checkout
       - run: npm install
       - run: npm run lint-diff
 
   test:
     executor: default-executor
     steps:
+      - checkout
       - run: npm install
       - run: npm run test:ci
 
