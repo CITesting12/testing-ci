@@ -7,7 +7,10 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.9.0
+      - image: circleci/node:11.5.0
+    working_directory: ~/
 
     steps:
+      - run
       - run: npm install
+      - run: npm test
